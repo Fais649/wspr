@@ -19,8 +19,7 @@
 		isMaximized = !isMaximized;
 		if (isMaximized) {
 			setTimeout(() => {
-				let textarea =
-					document.getElementById("textarea");
+				let textarea = document.getElementById("textarea");
 				if (textarea) {
 					textarea.focus();
 				}
@@ -38,11 +37,7 @@
 </script>
 
 <div class="wrapper">
-	<div
-		class="note-component rounded-xl {firstLoad
-			? ''
-			: animationClass}"
-	>
+	<div class="note-component rounded-xl {firstLoad ? '' : animationClass}">
 		<Label
 			class="pl-2 box h-[40px] flex  items-center text-left border-b-white
 		border-dotted border-b-[1px]"
@@ -105,6 +100,8 @@
 			width: 140%;
 			height: 200%;
 			border-radius: 0px;
+			border: 0px;
+			box-shadow: 0 0;
 		}
 	}
 
@@ -117,6 +114,8 @@
 			width: 140%;
 			height: 200%;
 			border-radius: 0px;
+			border: 0px;
+			box-shadow: 0 0;
 		}
 		100% {
 			position: relative;
@@ -151,6 +150,8 @@
 			width: 200%;
 			height: 245%;
 			border-radius: 0px;
+			border: 0px;
+			box-shadow: 0 0;
 		}
 	}
 
@@ -163,6 +164,8 @@
 			width: 200%;
 			height: 245%;
 			border-radius: 0px;
+			border: 0px;
+			box-shadow: 0 0;
 		}
 		100% {
 			position: relative;
