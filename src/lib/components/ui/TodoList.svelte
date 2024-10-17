@@ -2,7 +2,7 @@
 	import Label from "./label/label.svelte";
 	import TodoItemComp from "$lib/components/ui/TodoItem.svelte";
 	import { type TodoItem } from "$lib/types/index";
-	import { todos } from "$lib/stores/todayStore";
+	import { events, todos } from "$lib/stores/todayStore";
 	import CalendarEvents from "./CalendarEvents.svelte";
 
 	let todoItemId: number = 1;
@@ -12,12 +12,15 @@
 			return;
 		}
 
+		const input = document.querySelector(".todo-input") as HTMLElement | null;
+		if (input && document.activeElement !== input) {
+			input.focus();
+			input.scrollIntoView();
+			return;
+		}
+
 		if ($todos.length === 0 || !$todos[$todos.length - 1].editing) {
 			addTodo("", false, true);
-			setTimeout(() => {
-				const input = document.querySelector(".todo-input") as HTMLElement;
-				input.focus();
-			}, 10);
 		}
 	}
 
@@ -46,13 +49,15 @@
 		>
 		<div
 			class="h-full pb-8 w-full resize-none overflow-scroll"
-			on:pointerdown={(e) => {
+			on:pointerup={(e) => {
 				e.preventDefault();
 				handlePointerDown(e);
 			}}
 		>
 			<CalendarEvents />
-			<div class="border-white border-[1px] border-solid w-[3%] mb-3" />
+			{#if $events.length > 0}
+				<div class="border-white border-[1px] border-solid w-[3%] mb-3" />
+			{/if}
 			{#each $todos as todo (todo.id)}
 				<TodoItemComp {todo} on:delete={handleDelete} />
 			{/each}

@@ -6,6 +6,16 @@
 	export let todo: TodoItem;
 	const dispatch = createEventDispatcher<{ delete: { id: number } }>();
 
+	onMount(() => {
+		setTimeout(() => {
+			const input = document.querySelector(".todo-input") as HTMLElement;
+			if (input) {
+				input.focus();
+				input.scrollIntoView();
+			}
+		}, 30);
+	});
+
 	function handleBlur() {
 		if (todo.text.trim().length === 0) {
 			dispatch("delete", { id: todo.id });
@@ -18,16 +28,19 @@
 		todo.editing = true;
 		setTimeout(() => {
 			let input = document.querySelector(".todo-input") as HTMLElement;
-			input.focus();
+			if (input) {
+				input.focus();
+				input.scrollIntoView();
+			}
 		}, 10);
 	}
 </script>
 
 <div class="mt-0 flex flex-row pl-2 gap-2 w-full h-[28px]">
 	<div class="flex-row flex justify-start">
-		<div
+		<button
 			class="text-[16px] pr-2"
-			on:pointerdown={(e) => {
+			on:click={(e) => {
 				e.preventDefault();
 				if (!todo.editing) {
 					todo.completed = !todo.completed;
@@ -39,7 +52,7 @@
 			{:else}
 				󰄰
 			{/if}
-		</div>
+		</button>
 		{#if todo.editing}
 			<Input
 				class="todo-input h-[28px]"
@@ -50,16 +63,16 @@
 				bind:value={todo.text}
 			/>
 		{:else}
-			<div
+			<button
 				class="eventTitle text-left text-[16px] {todo.completed
 					? 'line-through'
 					: ''}"
-				on:pointerdown={() => {
+				on:click={() => {
 					handleTextClick();
 				}}
 			>
 				{todo.text}
-			</div>
+			</button>
 		{/if}
 	</div>
 </div>

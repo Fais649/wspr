@@ -2,11 +2,6 @@
 	import { CapacitorCalendar } from "@ebarooni/capacitor-calendar";
 	import { onMount } from "svelte";
 	import { date, events, type DateInfo } from "$lib/stores/todayStore";
-	import {
-		type DateValue,
-		fromDate,
-		getLocalTimeZone,
-	} from "@internationalized/date";
 
 	interface EventItem {
 		id: string;
@@ -99,7 +94,7 @@
 	.eventTitle {
 		text-overflow: ellipsis;
 		overflow: hidden;
-		width: 100px;
+		width: 140px;
 		white-space: nowrap;
 	}
 </style>

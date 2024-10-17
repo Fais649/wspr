@@ -33,17 +33,28 @@
 	justify-start p-5"
 >
 	<div class="flex {flexDirection}">
-		<div>
+		<div class="m-4">
 			<TodoList />
 		</div>
 
-		<div style={separatorStyle} />
-
-		<div>
+		<div class="m-4">
 			<TextAreaWLabel />
 		</div>
+		<div class="flex flex-row w-full justify-center">
+			<div
+				class="border-2 border-dashed h-6 rounded-2xl aspect-square m-4"
+			></div>
+			<div
+				class="border-2 border-dashed h-6 rounded-2xl aspect-square m-4"
+			></div>
+			<div
+				class="border-2 border-dashed h-6 rounded-2xl aspect-square m-4"
+			></div>
+			<div
+				class="border-2 border-dashed h-6 rounded-2xl aspect-square m-4"
+			></div>
+		</div>
 	</div>
-
 	<Footer class="absolute bottom-0 z-50">
 		<div class="bg-black">
 			<div
