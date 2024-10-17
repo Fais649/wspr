@@ -19,8 +19,8 @@ export interface EventItem {
 	id: string;
 	title: string;
 	desc: string;
-	start: number;
-	end: number;
+	startDate: number;
+	endDate: number;
 }
 
 export interface Timer {

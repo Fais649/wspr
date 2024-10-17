@@ -23,7 +23,9 @@ export const device: Readable<DeviceInfo> = readable<DeviceInfo>(undefined, (set
 		window.addEventListener('resize', onResize);
 
 		Keyboard.addListener('keyboardDidShow', (event) => {
-			kbHeight = event.keyboardHeight;
+			if (info.platform === 'ios') {
+				kbHeight = event.keyboardHeight;
+			}
 			setDeviceInfo();
 		});
 

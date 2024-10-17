@@ -29,10 +29,9 @@
 
 <div
 	style="height: {containerHeight}px;"
-	class="page top-0 fixed overflow-hidden flex flex-col w-full items-center
+	class="page top-1 fixed overflow-hidden flex flex-col w-full items-center
 	justify-start p-5"
 >
-	<div id="logo" class="text-5xl">⠋</div>
 	<div class="flex {flexDirection}">
 		<div>
 			<TodoList />
@@ -45,8 +44,14 @@
 		</div>
 	</div>
 
-	<Footer class="absolute bottom-0">
-		<div>
+	<Footer class="absolute bottom-0 z-50">
+		<div class="bg-black">
+			<div
+				id="logo"
+				class="absolute bottom-[-23%] items-center justify-center left-[47%] text-3xl"
+			>
+				⠋
+			</div>
 			<DatePicker on:changeDate={handleChangeDate} />
 		</div>
 	</Footer>
@@ -54,6 +59,6 @@
 
 <style>
 	.page {
-		transition: all 0.6s;
+		transition: all 0.3s;
 	}
 </style>

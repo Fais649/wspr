@@ -23,41 +23,52 @@
 	}
 </script>
 
-<div class="flex h-[30px] w-full flex-row justify-center p-3 text-center">
-	<div
-		class="flex w-[40px]"
-		on:pointerdown={(e) => {
-			e.preventDefault();
-			if (!todo.editing) {
-				todo.completed = !todo.completed;
-			}
-		}}
-	>
-		{#if todo.completed}
-			[x]
-		{:else}
-			[ ]
-		{/if}
-	</div>
-	{#if todo.editing}
-		<Input
-			placeholder=">..."
-			class="todo-input h-[28px] w-full rounded-xl border-[1px] border-dotted
-			pl-2 pr-2 text-[14px] ring-0"
-			on:blur={() => {
-				handleBlur();
-			}}
-			bind:value={todo.text}
-		/>
-	{:else}
+<div class="mt-0 flex flex-row pl-2 gap-2 w-full h-[28px]">
+	<div class="flex-row flex justify-start">
 		<div
-			class="flex h-[28px] w-full items-center pl-2 text-left align-middle
-			text-[14px] {todo.completed ? 'line-through' : ''}"
-			on:pointerdown={() => {
-				handleTextClick();
+			class="text-[16px] pr-2"
+			on:pointerdown={(e) => {
+				e.preventDefault();
+				if (!todo.editing) {
+					todo.completed = !todo.completed;
+				}
 			}}
 		>
-			{todo.text}
+			{#if todo.completed}
+				󰄴
+			{:else}
+				󰄰
+			{/if}
 		</div>
-	{/if}
+		{#if todo.editing}
+			<Input
+				class="todo-input h-[28px]"
+				placeholder=">..."
+				on:blur={() => {
+					handleBlur();
+				}}
+				bind:value={todo.text}
+			/>
+		{:else}
+			<div
+				class="eventTitle text-left text-[16px] {todo.completed
+					? 'line-through'
+					: ''}"
+				on:pointerdown={() => {
+					handleTextClick();
+				}}
+			>
+				{todo.text}
+			</div>
+		{/if}
+	</div>
 </div>
+
+<style>
+	.eventTitle {
+		text-overflow: ellipsis;
+		overflow: hidden;
+		white-space: nowrap;
+		width: 250px;
+	}
+</style>

@@ -99,8 +99,7 @@
 			left: -20%;
 			width: 140%;
 			height: 200%;
-			border-radius: 0px;
-			border: 0px;
+			border: 1px dotted;
 			box-shadow: 0 0;
 		}
 	}
@@ -113,8 +112,7 @@
 			left: -20%;
 			width: 140%;
 			height: 200%;
-			border-radius: 0px;
-			border: 0px;
+			border: 1px dotted;
 			box-shadow: 0 0;
 		}
 		100% {
@@ -149,8 +147,7 @@
 			top: 0;
 			width: 200%;
 			height: 245%;
-			border-radius: 0px;
-			border: 0px;
+			border: 1px dotted;
 			box-shadow: 0 0;
 		}
 	}
@@ -163,8 +160,7 @@
 			top: 0;
 			width: 200%;
 			height: 245%;
-			border-radius: 0px;
-			border: 0px;
+			border: 1px dotted;
 			box-shadow: 0 0;
 		}
 		100% {

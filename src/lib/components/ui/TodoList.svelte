@@ -3,6 +3,7 @@
 	import TodoItemComp from "$lib/components/ui/TodoItem.svelte";
 	import { type TodoItem } from "$lib/types/index";
 	import { todos } from "$lib/stores/todayStore";
+	import CalendarEvents from "./CalendarEvents.svelte";
 
 	let todoItemId: number = 1;
 
@@ -44,12 +45,14 @@
 		border-dotted border-b-[1px]">todo;</Label
 		>
 		<div
-			class="h-full w-full resize-none overflow-scroll"
+			class="h-full pb-8 w-full resize-none overflow-scroll"
 			on:pointerdown={(e) => {
 				e.preventDefault();
 				handlePointerDown(e);
 			}}
 		>
+			<CalendarEvents />
+			<div class="border-white border-[1px] border-solid w-[3%] mb-3" />
 			{#each $todos as todo (todo.id)}
 				<TodoItemComp {todo} on:delete={handleDelete} />
 			{/each}
@@ -76,5 +79,6 @@
 		z-index: 10;
 		width: 100%;
 		height: 100%;
+		overflow-y: scroll;
 	}
 </style>
