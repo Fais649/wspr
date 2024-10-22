@@ -17,6 +17,7 @@
   let keyboardHideHandle: PluginListenerHandle;
 
   onMount(async () => {
+    paneGroup.setLayout([70, 30]);
     keyboardShowHandle = await Keyboard.addListener("keyboardWillShow", () => {
       if (focusedNote) {
         paneGroup.setLayout([10, 90]);
@@ -28,7 +29,7 @@
     });
 
     keyboardHideHandle = await Keyboard.addListener("keyboardWillHide", () => {
-      paneGroup.setLayout([50, 50]);
+      paneGroup.setLayout([70, 30]);
       focusedItem = false;
       focusedNote = false;
     });
@@ -57,7 +58,6 @@
   </Resizable.Pane>
 
   <Resizable.Handle
-    withHandle
     on:pointerdown={() => {
       isPointerDown = true;
     }}

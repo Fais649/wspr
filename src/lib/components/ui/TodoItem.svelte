@@ -1,6 +1,5 @@
 <script lang="ts">
-  import { Input, type InputEvents } from "$lib/components/ui/input/index";
-  import { type SwipeCustomEvent, swipe } from "svelte-gestures";
+  import { Input } from "$lib/components/ui/input/index";
   import {
     ElementType,
     emitSimpleEvent,
@@ -11,6 +10,7 @@
   import { Keyboard } from "@capacitor/keyboard";
   import { createEventDispatcher, onDestroy, onMount } from "svelte";
   import { todos } from "$lib/stores/todayStore";
+  import { swipe } from "svelte-gestures";
 
   export let todo: TodoItem;
   let keyboardHandler: PluginListenerHandle;
@@ -85,6 +85,15 @@
       (e.target as HTMLElement).focus();
     }
   }
+
+  function handleSwipe(event): void {
+    if (
+      event.detail.direction === "left" ||
+      event.detail.direction === "right"
+    ) {
+      dispatch("delete", { id: todo.id });
+    }
+  }
 </script>
 
 <div
@@ -99,6 +108,8 @@
   >
     <button
       class="min-w-3 text-[15px] mr-3"
+      use:swipe
+      on:swipe={handleSwipe}
       on:click={(e) => {
         e.preventDefault();
         if (!todo.editing) {
@@ -122,7 +133,7 @@
       />
     {:else}
       <button
-        class="eventTitle text-left select-all text-[13px] {todo.completed
+        class="eventTitle text-left w-[50%] border-2 border-white select-all text-[13px] {todo.completed
           ? 'line-through'
           : ''}"
         on:click={triggerEditTodoItemEvent}

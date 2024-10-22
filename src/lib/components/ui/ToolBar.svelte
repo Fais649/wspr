@@ -157,19 +157,11 @@ overflow-hidden"
       class="border-t-[1px] border-dotted h-10 w-full justify-center flex flex-row items-center"
     >
       <Button
-        on:click={() => {
-          emitSimpleEvent(EventType.addCalendarEventItem);
-        }}
-        variant="ghost"
-        class="text-center text-xl"></Button
-      >
-
-      <Button
         variant="ghost"
         class="text-center text-2xl"
         on:click={() => {
           triggerAddTodoItemEvent();
-        }}>+</Button
+        }}></Button
       >
 
       <Button
@@ -198,7 +190,6 @@ overflow-hidden"
         variant="ghost"
         class="text-center text-xl"></Button
       >
-      <Button variant="ghost" class="text-center text-xl"></Button>
     </div>
   {/if}
 </div>
