@@ -45,5 +45,13 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
+		<key>UIFileSharingEnabled</key>
+		<true />
+		<key>LSSupportsOpeningDocumentsInPlace</key>
+		<true />
+	<key>NSCalendarsFullAccessUsageDescription</key>
+	<string>Add events to the calendar</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>To add events to the calendar</string>
 </dict>
 </plist>

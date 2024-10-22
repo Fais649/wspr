@@ -11,11 +11,15 @@ install! 'cocoapods', :disable_input_output_paths => true
 def capacitor_pods
   pod 'Capacitor', :path => '../../node_modules/@capacitor/ios'
   pod 'CapacitorCordova', :path => '../../node_modules/@capacitor/ios'
+  pod 'CapacitorCommunitySqlite', :path => '../../node_modules/@capacitor-community/sqlite'
   pod 'CapacitorDevice', :path => '../../node_modules/@capacitor/device'
   pod 'CapacitorFilesystem', :path => '../../node_modules/@capacitor/filesystem'
   pod 'CapacitorKeyboard', :path => '../../node_modules/@capacitor/keyboard'
+  pod 'CapacitorPreferences', :path => '../../node_modules/@capacitor/preferences'
+  pod 'CapgoCapacitorDataStorageSqlite', :path => '../../node_modules/@capgo/capacitor-data-storage-sqlite'
   pod 'EbarooniCapacitorCalendar', :path => '../../node_modules/@ebarooni/capacitor-calendar'
   pod 'CapacitorPluginSafeArea', :path => '../../node_modules/capacitor-plugin-safe-area'
+  pod 'CapacitorWidgetsbridgePlugin', :path => '../../node_modules/capacitor-widgetsbridge-plugin'
 end
 
 target 'App' do

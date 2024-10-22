@@ -1,75 +1,43 @@
 <script lang="ts">
-	import { Footer } from "$lib/components/ui/card";
-	import DatePicker from "$lib/components/ui/DatePicker.svelte";
-	import TextAreaWLabel from "$lib/components/ui/TextAreaWLabel.svelte";
-	import TodoList from "$lib/components/ui/TodoList.svelte";
-	import "capacitor-plugin-safe-area";
-	import { device, type DeviceInfo } from "$lib/stores/deviceStore";
+  import { Footer } from "$lib/components/ui/card";
+  import ToolBar from "$lib/components/ui/ToolBar.svelte";
+  import { device, type DeviceInfo } from "$lib/stores/deviceStore";
+  import DividerPanel from "$lib/components/ui/DividerPanel.svelte";
+  import { loadTodayInfoFile } from "$lib/services/filesystem";
+  import { onMount } from "svelte";
+  import { date } from "$lib/stores/todayStore";
 
-	let deviceInfo: DeviceInfo;
-	device.subscribe((data) => {
-		deviceInfo = data;
-		console.log(data);
-		console.log(deviceInfo);
-	});
+  let deviceInfo: DeviceInfo;
+  device.subscribe((data) => {
+    deviceInfo = data;
+  });
 
-	$: containerHeight = deviceInfo !== undefined ? deviceInfo.heightPx : 800;
-	$: containerWidth = deviceInfo !== undefined ? deviceInfo.widthPx : 800;
-	$: flexDirection = containerWidth > 800 ? "flex-row" : "flex-col";
-	$: separatorStyle =
-		flexDirection === "flex-row" ? "width: 20px;" : "height: 20px;";
-
-	function handleChangeDate(e: CustomEvent) {
-		console.log("oldDate");
-		console.log(e.detail.prevDateValue);
-		console.log("date");
-		console.log(e.detail.dateValue);
-	}
+  $: containerHeight = deviceInfo !== undefined ? deviceInfo.heightPx : 800;
+  onMount(() => {
+    loadTodayInfoFile($date.dateString);
+  });
 </script>
 
 <div
-	style="height: {containerHeight}px;"
-	class="page top-1 fixed overflow-hidden flex flex-col w-full items-center
-	justify-start p-5"
+  style="height: {containerHeight}px;"
+  class="page fixed overflow-hidden flex flex-col w-full items-center
+	justify-start p-2"
 >
-	<div class="flex {flexDirection}">
-		<div class="m-4">
-			<TodoList />
-		</div>
+  <div class="flex justify-center h-full w-full mt-1 mb-20">
+    <DividerPanel />
+  </div>
 
-		<div class="m-4">
-			<TextAreaWLabel />
-		</div>
-		<div class="flex flex-row w-full justify-center">
-			<div
-				class="border-2 border-dashed h-6 rounded-2xl aspect-square m-4"
-			></div>
-			<div
-				class="border-2 border-dashed h-6 rounded-2xl aspect-square m-4"
-			></div>
-			<div
-				class="border-2 border-dashed h-6 rounded-2xl aspect-square m-4"
-			></div>
-			<div
-				class="border-2 border-dashed h-6 rounded-2xl aspect-square m-4"
-			></div>
-		</div>
-	</div>
-	<Footer class="absolute bottom-0 z-50">
-		<div class="bg-black">
-			<div
-				id="logo"
-				class="absolute bottom-[-23%] items-center justify-center left-[47%] text-3xl"
-			>
-				⠋
-			</div>
-			<DatePicker on:changeDate={handleChangeDate} />
-		</div>
-	</Footer>
+  <Footer class="w-full absolute bottom-0 z-50">
+    <div class="w-full flex flex-row justify-center">
+      <ToolBar />
+    </div>
+  </Footer>
 </div>
 
 <style>
-	.page {
-		transition: all 0.3s;
-	}
+  .page {
+    transition: all 0.3s;
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
 </style>
