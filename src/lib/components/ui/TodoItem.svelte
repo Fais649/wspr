@@ -133,7 +133,7 @@
       />
     {:else}
       <button
-        class="eventTitle text-left w-[50%] border-2 border-white select-all text-[13px] {todo.completed
+        class="eventTitle text-left w-[50%] select-all text-[13px] {todo.completed
           ? 'line-through'
           : ''}"
         on:click={triggerEditTodoItemEvent}
