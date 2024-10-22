@@ -2,7 +2,7 @@ import type { CapacitorConfig } from '@capacitor/cli';
 import { KeyboardResize, KeyboardStyle } from '@capacitor/keyboard';
 
 const config: CapacitorConfig = {
-  appId: 'com.wispr.app',
+  appId: 'com.wisp-r.app',
   appName: 'wisp_r',
   webDir: 'build',
   plugins: {
