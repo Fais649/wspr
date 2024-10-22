@@ -20,11 +20,11 @@ const config: CapacitorConfig = {
       offset: 0,
     },
   },
-  server: {
-    //"url": "http://172.18.0.1:5173/",
-    "url": "http://172.16.100.146:5173/",
-    "cleartext": true
-  }
+  //server: {
+  //  //"url": "http://172.18.0.1:5173/",
+  //  "url": "http://172.16.100.146:5173/",
+  //  "cleartext": true
+  //}
 };
 
 export default config;
