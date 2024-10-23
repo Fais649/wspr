@@ -9,20 +9,24 @@
   import type { PluginListenerHandle } from "@capacitor/core";
   import { Keyboard } from "@capacitor/keyboard";
   import { createEventDispatcher, onDestroy, onMount } from "svelte";
-  import { todos } from "$lib/stores/todayStore";
   import { swipe } from "svelte-gestures";
+  import { reloadWidget } from "$lib/services/widget";
 
   export let todo: TodoItem;
+  export let isChild: boolean = false;
+
   let keyboardHandler: PluginListenerHandle;
   const dispatch = createEventDispatcher<{ delete: { id: number } }>();
 
   onMount(async () => {
     focusActiveItem();
     keyboardHandler = await Keyboard.addListener("keyboardDidShow", () => {});
+    await reloadWidget();
   });
 
-  onDestroy(() => {
+  onDestroy(async () => {
     keyboardHandler.remove();
+    await reloadWidget();
   });
 
   function focusActiveItem() {
@@ -56,35 +60,9 @@
 
   function toggleCompleteTodoItem() {
     todo.completed = !todo.completed;
-    todos.update((items) => items.filter((item) => item.id !== todo.id));
-
-    if (todo.completed) {
-      todos.update((items: TodoItem[]) => [...items, todo]);
-      return;
-    }
-
-    todos.update((items: TodoItem[]) => [todo, ...items]);
   }
 
-  function handleKeyDown(e: KeyboardEvent): void {
-    if (e.key === "Escape") {
-      (e.target as HTMLElement).blur();
-    }
-    if (e.key === "Enter") {
-      if (todo.editing) {
-        emitSimpleEvent(EventType.addTodoItem, {
-          targetId: todo.id.toString(),
-          elementType: ElementType.todoItem,
-        });
-      }
-    }
-
-    if (e.key === "Tab") {
-      e.preventDefault();
-      todo.indentNumber = todo.indentNumber > 0 ? 0 : 1;
-      (e.target as HTMLElement).focus();
-    }
-  }
+  function handleKeyDown(e: KeyboardEvent): void {}
 
   function handleSwipe(event): void {
     if (
@@ -99,14 +77,11 @@
 <div
   id={todo.id.toString()}
   data-type="todoItem"
-  class="flex mt-2 flex-row gap-2 w-full select-all h-[28px]"
+  class="flex mt-2 flex-row gap-2 w-full h-[28px]"
 >
-  <div
-    class="{todo.indentNumber >= 1
-      ? 'pl-7'
-      : 'pl-2'} flex-row w-full select-all flex justify-start mr-8"
-  >
+  <div class="pl-2 flex-row w-full flex justify-start mr-8">
     <button
+      style={todo.completed ? "color: grey;" : ""}
       class="min-w-3 text-[15px] mr-3"
       use:swipe
       on:swipe={handleSwipe}
@@ -118,14 +93,14 @@
       }}
     >
       {#if todo.completed}
-        
+        {isChild ? "" : ""}
       {:else}
-        {todo.indentNumber >= 1 ? "" : ""}
+        {isChild ? "" : ""}
       {/if}
     </button>
     {#if todo.editing}
       <Input
-        class="todo-input select-all pl-2 rounded-2xl text-[13px] w-full h-[28px]"
+        class="todo-input pl-2 rounded-2xl text-[13px] w-full h-[28px]"
         placeholder=">..."
         on:blur={handleBlur}
         on:keydown={handleKeyDown}
@@ -133,10 +108,15 @@
       />
     {:else}
       <button
-        class="eventTitle text-left w-[50%] select-all text-[13px] {todo.completed
+        style={todo.completed ? "color: grey;" : ""}
+        class="eventTitle text-left w-[50%] text-[13px] {todo.completed
           ? 'line-through'
           : ''}"
-        on:click={triggerEditTodoItemEvent}
+        on:click={() => {
+          if (!todo.completed) {
+            triggerEditTodoItemEvent();
+          }
+        }}
       >
         {todo.text}
       </button>

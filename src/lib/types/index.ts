@@ -13,7 +13,7 @@ export interface TodoItem {
   text: string;
   completed: boolean;
   editing: boolean;
-  indentNumber: number;
+  isChild: boolean;
 }
 
 export interface EventItem {

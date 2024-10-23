@@ -21,7 +21,7 @@
   <div class="h-full">
     <Label class="pl-1 pt-1">note;</Label>
     <Textarea
-      class="h-[82%] select-all focus-visible:ring-0 rounded-b-2xl"
+      class="h-[82%] focus-visible:ring-0 rounded-b-2xl"
       on:click={() => {
         isFocused = true;
         emitSimpleEvent(EventType.focusOn, {

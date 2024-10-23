@@ -16,11 +16,12 @@
     loadTodayInfoFile,
     saveTodayInfoFile,
   } from "$lib/services/filesystem";
+  import { reloadWidget } from "$lib/services/widget";
 
   let kbOut: boolean = false;
   let keyboardShowHandle: PluginListenerHandle;
   let keyboardHideHandle: PluginListenerHandle;
-  let indented: boolean = false;
+  let isChild: boolean = false;
 
   onMount(async () => {
     keyboardShowHandle = await Keyboard.addListener("keyboardWillShow", () => {
@@ -61,37 +62,16 @@
   }
 
   function triggerAddTodoItemEvent() {
-    let noEdit = true;
-
-    $todos.forEach((todo) => {
-      if (todo.editing) {
-        console.log(todo.id.toString());
-        emitSimpleEvent(EventType.addTodoItem, {
-          targetId: todo.id.toString(),
-          elementType: ElementType.todoItem,
-        });
-        setTimeout(() => {
-          indented = todo.indentNumber > 0;
-        }, 3);
-        noEdit = false;
-      }
-    });
-
-    if (noEdit) {
-      emitSimpleEvent(EventType.addTodoItem);
-    }
+    emitSimpleEvent(EventType.addTodoItem);
   }
 
-  function triggerIndentTodoItemEvent() {
+  function triggerAddTodoItemChildEvent() {
     $todos.forEach((todo) => {
       if (todo.editing) {
-        emitSimpleEvent(EventType.indentTodoItem, {
+        emitSimpleEvent(EventType.addTodoItemChild, {
           targetId: todo.id.toString(),
           elementType: ElementType.todoItem,
         });
-        setTimeout(() => {
-          indented = todo.indentNumber > 0;
-        }, 3);
       }
     });
   }
@@ -108,6 +88,8 @@ overflow-hidden"
       variant="ghost"
       on:click={() => {
         changeDateBy(-1);
+
+        reloadWidget();
       }}
       class="text-center "></Button
     >
@@ -162,14 +144,6 @@ overflow-hidden"
         on:click={() => {
           triggerAddTodoItemEvent();
         }}></Button
-      >
-
-      <Button
-        variant="ghost"
-        class="text-center text-lg"
-        on:click={() => {
-          triggerIndentTodoItemEvent();
-        }}>{indented ? "󰌥" : "󰌒"}</Button
       >
     </div>
   {:else}

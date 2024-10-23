@@ -5,7 +5,7 @@ export enum EventType {
   editCalendarEventItem,
   addTodoItem,
   editTodoItem,
-  indentTodoItem,
+  addTodoItemChild,
   focusOn,
 
 }

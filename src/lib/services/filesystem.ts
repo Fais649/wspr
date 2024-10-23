@@ -38,6 +38,17 @@ function stringify() {
   });
 }
 
+function stringifyBasic() {
+  return JSON.stringify({
+    dateInfo: {
+      dateString: dateInfo.dateString ?? "",
+      dayOfWeek: dateInfo.dayOfWeek ?? ""
+    },
+    todoItems: todoItems,
+    eventItems: eventItems,
+  })
+}
+
 function getDefaultDataString() {
   return JSON.stringify({
     dateInfo: dateInfo,
@@ -76,6 +87,10 @@ async function loadInfoFile(dateString: string) {
   return dataString;
 }
 
+
+export async function getTodayInfoJson() {
+  return stringifyBasic();
+}
 
 export async function loadTodayInfoFile(dateString: string) {
   const dataString = await loadInfoFile(dateString);

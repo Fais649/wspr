@@ -1,19 +1,12 @@
-import { Preferences } from '@capacitor/preferences';
+import { WidgetsBridgePlugin } from "capacitor-widgetsbridge-plugin";
+import { getTodayInfoJson } from "$lib/services/filesystem";
 
-const setName = async () => {
-	await Preferences.set({
-		key: 'name',
-		value: 'Max',
+export async function reloadWidget() {
+	await WidgetsBridgePlugin.setItem({
+		key: "demo",
+		value: await getTodayInfoJson(),
+		group: "group.punk",
 	});
-};
 
-const checkName = async () => {
-	const { value } = await Preferences.get({ key: 'name' });
-
-	console.log(`Hello ${value}!`);
-};
-
-const removeName = async () => {
-	await Preferences.remove({ key: 'name' });
-};
-
+	await WidgetsBridgePlugin.reloadTimelines({ ofKind: "items" });
+}

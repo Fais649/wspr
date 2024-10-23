@@ -13,6 +13,7 @@
   import { CapacitorCalendar } from "@ebarooni/capacitor-calendar";
   import { device, type DeviceInfo } from "$lib/stores/deviceStore";
   import { ScrollArea } from "$lib/components/ui/scroll-area/index.js";
+  import { reloadWidget } from "$lib/services/widget";
 
   let deviceInfo: DeviceInfo;
   device.subscribe((data) => {
@@ -23,6 +24,7 @@
     await CapacitorCalendar.requestFullCalendarAccess();
     await CapacitorCalendar.getDefaultCalendar();
     await loadCalendarEvents();
+    await reloadWidget();
   });
 
   $: if ($simpleEvent) {
@@ -30,7 +32,7 @@
       console.log("itemList");
       switch ($simpleEvent.eventType) {
         case EventType.addTodoItem:
-          await addTodoEvent($simpleEvent);
+          await addTodoItemEvent($simpleEvent);
           break;
         case EventType.addCalendarEventItem:
           await addCalendarEvent($simpleEvent);
@@ -38,8 +40,8 @@
         case EventType.editCalendarEventItem:
           await editCalendarEvent($simpleEvent);
           break;
-        case EventType.indentTodoItem:
-          await indentTodoItem($simpleEvent);
+        case EventType.addTodoItemChild:
+          await addTodoItemChild($simpleEvent);
           break;
         case EventType.focusOn:
           break;
@@ -47,15 +49,7 @@
     })();
   }
 
-  async function indentTodoItem(event: SimpleEvent) {
-    if (!event.detail || Number(event.detail.targetId) === 0) {
-      return;
-    }
-
-    let targetId: number = Number(event.detail.targetId);
-
-    $todos[targetId].indentNumber = $todos[targetId].indentNumber > 0 ? 0 : 1;
-  }
+  async function addTodoItemChild(event: SimpleEvent) {}
 
   async function addCalendarEvent(event: SimpleEvent) {
     await CapacitorCalendar.createEventWithPrompt({
@@ -67,7 +61,6 @@
   }
 
   async function editCalendarEvent(event: SimpleEvent) {
-    console.log("modifyEvent Handler");
     if (!event.detail) {
       return;
     }
@@ -107,19 +100,11 @@
     } catch (e) {
       console.error("Failed to load calendar events: ", e);
     }
+    await reloadWidget();
   }
 
-  async function addTodoEvent(event: SimpleEvent) {
-    createNewTodoItem(event);
-  }
-
-  function createNewTodoItem(event: SimpleEvent) {
-    let newId: number;
-    if (event.detail) {
-      newId = Number(event.detail.targetId) + 1;
-    } else {
-      newId = $todos.length;
-    }
+  async function addTodoItemEvent(event: SimpleEvent) {
+    let newId: number = $todos.length;
 
     let input = document.querySelector(".todo-input") as HTMLElement | null;
     if (document.activeElement === input) {
@@ -136,29 +121,10 @@
       text: "",
       completed: false,
       editing: true,
-      indentNumber: 0,
+      isChild: false,
     };
 
-    if ($todos.length > 0) {
-      newTodo.indentNumber = $todos[newId - 1].indentNumber;
-    }
-
-    if ($todos.length === newId) {
-      todos.update((items: TodoItem[]) => [...items, newTodo]);
-      return;
-    }
-
-    todos.update((items: TodoItem[]) => {
-      const newItems = [
-        ...items.slice(0, newId),
-        { ...newTodo, id: newId },
-        ...items.slice(newId).map((item) => ({
-          ...item,
-          id: item.id + 1, // Shift the id of items after newId
-        })),
-      ];
-      return newItems;
-    });
+    todos.update((items: TodoItem[]) => [...items, newTodo]);
   }
 
   function deleteTodoItem(event: CustomEvent) {
@@ -179,9 +145,20 @@
         <CalendarEventItem {event} />
       </div>
     {/each}
+
     {#each $todos as todo (todo.id)}
       <div class="">
-        <TodoItemComponent {todo} on:delete={deleteTodoItem} />
+        {#if !todo.completed}
+          <TodoItemComponent {todo} on:delete={deleteTodoItem} />
+        {/if}
+      </div>
+    {/each}
+
+    {#each $todos as todo (todo.id)}
+      <div class="">
+        {#if todo.completed}
+          <TodoItemComponent {todo} on:delete={deleteTodoItem} />
+        {/if}
       </div>
     {/each}
   </ScrollArea>
