@@ -13,7 +13,6 @@ struct DataModel: Codable {
 struct DateInfo: Codable {
     let dateString: String
     let dayOfWeek: String
-    // Add other properties if needed
 }
 
 struct TodoItem: Codable, Identifiable {
@@ -93,16 +92,7 @@ struct SimpleEntry: TimelineEntry {
 
 struct WidgetEntryView: View {
     var entry: Provider.Entry
-    init(entry: Provider.Entry) {
-        self.entry = entry
 
-        // Print all font family names and font names
-        //for family in UIFont.familyNames {
-          //  print("Family: \(family)")
-            //let names = UIFont.fontNames(forFamilyName: family)
-            //print("Font names: \(names)")
-//        }
-    }
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             HStack(alignment: .center) {
@@ -110,9 +100,11 @@ struct WidgetEntryView: View {
                                       .resizable()
                                       .aspectRatio(contentMode: .fit)
                                       .frame(width: 30, height: 30) // Adjust size as needed
+                                      .widgetAccentable()
                 Spacer()
                 Text("\(entry.dataModel.dateInfo.dayOfWeek) : \(entry.dataModel.dateInfo.dateString)")
                     .font(.custom("GohuFontUni11NFM", size: 16))
+                    .widgetAccentable()
             }
             
             HStack(alignment: .center) {
@@ -120,6 +112,7 @@ struct WidgetEntryView: View {
                   .stroke(style: StrokeStyle(lineWidth: 1, dash: [3]))
                   .frame(height: 1)
             }
+            .widgetAccentable()
             .padding(.vertical, 5)
 
             // Event Items
@@ -139,6 +132,7 @@ struct WidgetEntryView: View {
                         .padding(.vertical, 2)
                     }
                 }
+                .widgetAccentable(true)
                 .padding(.vertical, 5)
             }
 
@@ -171,6 +165,7 @@ struct WidgetEntryView: View {
                         }
                     }
                 }
+                .widgetAccentable()
                 .padding(.top, 5)
             }
 
@@ -180,15 +175,7 @@ struct WidgetEntryView: View {
         .containerBackground(for: .widget) {
             Color.black
         }
-        .background(Color.black)
-    }
-
-    // Helper function to format time
-    func formatTime(_ timestamp: Int) -> String {
-        let date = Date(timeIntervalSince1970: TimeInterval(timestamp))
-        let formatter = DateFormatter()
-        formatter.timeStyle = .short
-        return formatter.string(from: date)
+        .widgetAccentable(false)
     }
 }
 
@@ -200,6 +187,23 @@ struct Line: Shape {
         return path
     }
 }
+
+
+func formatTime(_ timestamp: Int) -> String {
+    let timeInterval = TimeInterval(timestamp)
+    let adjustedTimestamp = timeInterval > 1_000_000_000_000 ? timeInterval / 1000 : timeInterval
+
+    let date = Date(timeIntervalSince1970: adjustedTimestamp)
+    
+    let formatter = DateFormatter()
+    formatter.timeZone = TimeZone.current // Use the device's local timezone
+    formatter.locale = Locale.current     // Use the device's current locale
+    formatter.dateFormat = "HH:mm"       // 12-hour format with AM/PM
+    
+    return formatter.string(from: date)
+}
+
+
 // MARK: - Widget Configuration
 
 struct wispr_home: Widget {

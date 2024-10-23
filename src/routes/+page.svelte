@@ -21,6 +21,7 @@
 
 	onDestroy(async () => {
 		await reloadWidget();
+		appListener.remove();
 	});
 
 	let deviceInfo: DeviceInfo;

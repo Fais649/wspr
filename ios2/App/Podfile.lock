@@ -1,0 +1,102 @@
+PODS:
+  - Capacitor (6.1.2):
+    - CapacitorCordova
+  - CapacitorApp (6.0.1):
+    - Capacitor
+  - CapacitorCommunitySqlite (6.0.2):
+    - Capacitor
+    - SQLCipher
+    - ZIPFoundation
+  - CapacitorCordova (6.1.2)
+  - CapacitorDevice (6.0.1):
+    - Capacitor
+  - CapacitorFilesystem (6.0.1):
+    - Capacitor
+  - CapacitorKeyboard (6.0.2):
+    - Capacitor
+  - CapacitorPluginSafeArea (3.0.3):
+    - Capacitor
+  - CapacitorPreferences (6.0.2):
+    - Capacitor
+  - CapacitorWidgetsbridgePlugin (0.1.2):
+    - Capacitor
+  - CapgoCapacitorDataStorageSqlite (6.0.19):
+    - Capacitor
+    - SQLite.swift/SQLCipher
+  - EbarooniCapacitorCalendar (6.7.1):
+    - Capacitor
+  - SQLCipher (4.6.1):
+    - SQLCipher/standard (= 4.6.1)
+  - SQLCipher/common (4.6.1)
+  - SQLCipher/standard (4.6.1):
+    - SQLCipher/common
+  - SQLite.swift/SQLCipher (0.15.3):
+    - SQLCipher (>= 4.0.0)
+  - ZIPFoundation (0.9.19)
+
+DEPENDENCIES:
+  - "Capacitor (from `../../node_modules/@capacitor/ios`)"
+  - "CapacitorApp (from `../../node_modules/@capacitor/app`)"
+  - "CapacitorCommunitySqlite (from `../../node_modules/@capacitor-community/sqlite`)"
+  - "CapacitorCordova (from `../../node_modules/@capacitor/ios`)"
+  - "CapacitorDevice (from `../../node_modules/@capacitor/device`)"
+  - "CapacitorFilesystem (from `../../node_modules/@capacitor/filesystem`)"
+  - "CapacitorKeyboard (from `../../node_modules/@capacitor/keyboard`)"
+  - CapacitorPluginSafeArea (from `../../node_modules/capacitor-plugin-safe-area`)
+  - "CapacitorPreferences (from `../../node_modules/@capacitor/preferences`)"
+  - CapacitorWidgetsbridgePlugin (from `../../node_modules/capacitor-widgetsbridge-plugin`)
+  - "CapgoCapacitorDataStorageSqlite (from `../../node_modules/@capgo/capacitor-data-storage-sqlite`)"
+  - "EbarooniCapacitorCalendar (from `../../node_modules/@ebarooni/capacitor-calendar`)"
+
+SPEC REPOS:
+  trunk:
+    - SQLCipher
+    - SQLite.swift
+    - ZIPFoundation
+
+EXTERNAL SOURCES:
+  Capacitor:
+    :path: "../../node_modules/@capacitor/ios"
+  CapacitorApp:
+    :path: "../../node_modules/@capacitor/app"
+  CapacitorCommunitySqlite:
+    :path: "../../node_modules/@capacitor-community/sqlite"
+  CapacitorCordova:
+    :path: "../../node_modules/@capacitor/ios"
+  CapacitorDevice:
+    :path: "../../node_modules/@capacitor/device"
+  CapacitorFilesystem:
+    :path: "../../node_modules/@capacitor/filesystem"
+  CapacitorKeyboard:
+    :path: "../../node_modules/@capacitor/keyboard"
+  CapacitorPluginSafeArea:
+    :path: "../../node_modules/capacitor-plugin-safe-area"
+  CapacitorPreferences:
+    :path: "../../node_modules/@capacitor/preferences"
+  CapacitorWidgetsbridgePlugin:
+    :path: "../../node_modules/capacitor-widgetsbridge-plugin"
+  CapgoCapacitorDataStorageSqlite:
+    :path: "../../node_modules/@capgo/capacitor-data-storage-sqlite"
+  EbarooniCapacitorCalendar:
+    :path: "../../node_modules/@ebarooni/capacitor-calendar"
+
+SPEC CHECKSUMS:
+  Capacitor: 679f9673fdf30597493a6362a5d5bf233d46abc2
+  CapacitorApp: 0bc633b4eae40a1f32cd2834788fad3bc42da6a1
+  CapacitorCommunitySqlite: 47dab3a2d9a9581a0fe7642cf9cffd34c5d5b358
+  CapacitorCordova: f48c89f96c319101cd2f0ce8a2b7449b5fb8b3dd
+  CapacitorDevice: 7097a1deb4224b77fd13a6e60a355d0062a5d772
+  CapacitorFilesystem: 37fb3aa5c945b4539ab11c74a5c57925a302bf24
+  CapacitorKeyboard: 2700f9b18687be021e28b5a09b59eb151a46d5e0
+  CapacitorPluginSafeArea: e1eca7f70974f0e270d96f70cd0a5f51523164b1
+  CapacitorPreferences: e8284bf740cf8c6d3f25409af3c01df87dfeb5a1
+  CapacitorWidgetsbridgePlugin: 384cf6a56ba2a3ee6d199579f5403723e766b958
+  CapgoCapacitorDataStorageSqlite: 0efa74f00a9f6b6865bfc289609a3cdc540d59f2
+  EbarooniCapacitorCalendar: c187214b879364f7af240c4fcf8a54a386280fe5
+  SQLCipher: 77fbe633cd84db04b07876dd50766b4924b57d61
+  SQLite.swift: 8d054987f02728cc912b0eb5a9659650573a65a2
+  ZIPFoundation: b8c29ea7ae353b309bc810586181fd073cb3312c
+
+PODFILE CHECKSUM: f612ec158177a58da465cc0773eb46a7b1e4441d
+
+COCOAPODS: 1.15.2
