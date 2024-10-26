@@ -11,25 +11,24 @@
     simpleEvent,
   } from "$lib/stores/eventStore";
   import { CapacitorCalendar } from "@ebarooni/capacitor-calendar";
-  import { device, type DeviceInfo } from "$lib/stores/deviceStore";
   import { ScrollArea } from "$lib/components/ui/scroll-area/index.js";
   import { reloadWidget } from "$lib/services/widget";
+  import { loadTodayInfoFile } from "$lib/services/filesystem";
+  import type { PaneGroupAPI } from "paneforge";
 
-  let deviceInfo: DeviceInfo;
-  device.subscribe((data) => {
-    deviceInfo = data;
-  });
+  export let paneGroup: PaneGroupAPI;
+  export let portrait: boolean;
 
   onMount(async () => {
     await CapacitorCalendar.requestFullCalendarAccess();
     await CapacitorCalendar.getDefaultCalendar();
+    await loadTodayInfoFile($date.dateString);
     await loadCalendarEvents();
     await reloadWidget();
   });
 
   $: if ($simpleEvent) {
     (async () => {
-      console.log("itemList");
       switch ($simpleEvent.eventType) {
         case EventType.addTodoItem:
           await addTodoItemEvent($simpleEvent);
@@ -40,16 +39,12 @@
         case EventType.editCalendarEventItem:
           await editCalendarEvent($simpleEvent);
           break;
-        case EventType.addTodoItemChild:
-          await addTodoItemChild($simpleEvent);
-          break;
-        case EventType.focusOn:
+        default:
           break;
       }
+      simpleEvent.clear();
     })();
   }
-
-  async function addTodoItemChild(event: SimpleEvent) {}
 
   async function addCalendarEvent(event: SimpleEvent) {
     await CapacitorCalendar.createEventWithPrompt({
@@ -100,6 +95,7 @@
     } catch (e) {
       console.error("Failed to load calendar events: ", e);
     }
+
     await reloadWidget();
   }
 
@@ -133,6 +129,7 @@
   }
 
   date.subscribe((date) => {
+    loadTodayInfoFile(date.dateString);
     loadCalendarEvents();
   });
 </script>
@@ -149,7 +146,12 @@
     {#each $todos as todo (todo.id)}
       <div class="">
         {#if !todo.completed}
-          <TodoItemComponent {todo} on:delete={deleteTodoItem} />
+          <TodoItemComponent
+            {portrait}
+            {paneGroup}
+            {todo}
+            on:delete={deleteTodoItem}
+          />
         {/if}
       </div>
     {/each}
@@ -157,7 +159,12 @@
     {#each $todos as todo (todo.id)}
       <div class="">
         {#if todo.completed}
-          <TodoItemComponent {todo} on:delete={deleteTodoItem} />
+          <TodoItemComponent
+            {portrait}
+            {paneGroup}
+            {todo}
+            on:delete={deleteTodoItem}
+          />
         {/if}
       </div>
     {/each}

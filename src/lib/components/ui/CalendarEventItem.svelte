@@ -1,6 +1,9 @@
 <script lang="ts">
-  import { emitSimpleEvent, EventType } from "$lib/stores/eventStore";
-  import { ElementType } from "$lib/stores/focusStore";
+  import {
+    emitSimpleEvent,
+    EventType,
+    ElementType,
+  } from "$lib/stores/eventStore";
 
   export let event: EventItem;
 

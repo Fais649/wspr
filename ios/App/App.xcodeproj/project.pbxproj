@@ -15,32 +15,30 @@
 		504EC3121FED79650016851F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 504EC3101FED79650016851F /* LaunchScreen.storyboard */; };
 		50B271D11FEDC1A000F3C39B /* public in Resources */ = {isa = PBXBuildFile; fileRef = 50B271D01FEDC1A000F3C39B /* public */; };
 		A084ECDBA7D38E1E42DFC39D /* Pods_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF277DCFFFF123FFC6DF26C7 /* Pods_App.framework */; };
-		A28F378E2CC8D4270035884B /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A28F378D2CC8D4270035884B /* WidgetKit.framework */; };
-		A28F37902CC8D4270035884B /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A28F378F2CC8D4270035884B /* SwiftUI.framework */; };
-		A28F37A12CC8D4280035884B /* wispr.homeExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A28F378C2CC8D4270035884B /* wispr.homeExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		A28F37D22CC8FB510035884B /* gohufont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A28F37D12CC8FB510035884B /* gohufont.ttf */; };
-		A28F37D32CC8FB510035884B /* gohufont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A28F37D12CC8FB510035884B /* gohufont.ttf */; };
-		A28F37DA2CC90D0B0035884B /* AppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = A28F37D92CC90D0B0035884B /* AppIcon.png */; };
+		A2E51BA32CCBB7A0001632BC /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2E51BA22CCBB7A0001632BC /* WidgetKit.framework */; };
+		A2E51BA52CCBB7A0001632BC /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2E51BA42CCBB7A0001632BC /* SwiftUI.framework */; };
+		A2E51BB62CCBB7A1001632BC /* wispr.homeExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A2E51BA12CCBB7A0001632BC /* wispr.homeExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A2E51BC12CCBE324001632BC /* gohufont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A2E51BBF2CCBE324001632BC /* gohufont.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		A28F379F2CC8D4280035884B /* PBXContainerItemProxy */ = {
+		A2E51BB42CCBB7A1001632BC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 504EC2FC1FED79650016851F /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = A28F378B2CC8D4270035884B;
+			remoteGlobalIDString = A2E51BA02CCBB7A0001632BC;
 			remoteInfo = wispr.homeExtension;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		A28F37A22CC8D4280035884B /* Embed Foundation Extensions */ = {
+		A2E51BB72CCBB7A1001632BC /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				A28F37A12CC8D4280035884B /* wispr.homeExtension.appex in Embed Foundation Extensions */,
+				A2E51BB62CCBB7A1001632BC /* wispr.homeExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -50,37 +48,36 @@
 /* Begin PBXFileReference section */
 		2FAD9762203C412B000D30F8 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = config.xml; sourceTree = "<group>"; };
 		50379B222058CBB4000EE86E /* capacitor.config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = capacitor.config.json; sourceTree = "<group>"; };
-		504EC3041FED79650016851F /* App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = App.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		504EC3041FED79650016851F /* wispr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wispr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		504EC3071FED79650016851F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		504EC30C1FED79650016851F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		504EC30E1FED79650016851F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		504EC3111FED79650016851F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		504EC3131FED79650016851F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50B271D01FEDC1A000F3C39B /* public */ = {isa = PBXFileReference; lastKnownFileType = folder; path = public; sourceTree = "<group>"; };
-		A28F378C2CC8D4270035884B /* wispr.homeExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = wispr.homeExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		A28F378D2CC8D4270035884B /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
-		A28F378F2CC8D4270035884B /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		A28F37A72CC8D4450035884B /* wispr.homeExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = wispr.homeExtension.entitlements; sourceTree = "<group>"; };
-		A28F37A82CC8D46A0035884B /* App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = App.entitlements; sourceTree = "<group>"; };
-		A28F37D12CC8FB510035884B /* gohufont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = gohufont.ttf; sourceTree = "<group>"; };
-		A28F37D92CC90D0B0035884B /* AppIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AppIcon.png; sourceTree = "<group>"; };
+		A2E51BA12CCBB7A0001632BC /* wispr.homeExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = wispr.homeExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2E51BA22CCBB7A0001632BC /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		A2E51BA42CCBB7A0001632BC /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		A2E51BBC2CCBB7EC001632BC /* wispr.homeExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = wispr.homeExtension.entitlements; sourceTree = "<group>"; };
+		A2E51BBD2CCBB7F8001632BC /* App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = App.entitlements; sourceTree = "<group>"; };
+		A2E51BBF2CCBE324001632BC /* gohufont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = gohufont.ttf; sourceTree = "<group>"; };
 		AF277DCFFFF123FFC6DF26C7 /* Pods_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF51FD2D460BCFE21FA515B2 /* Pods-App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App.release.xcconfig"; path = "Pods/Target Support Files/Pods-App/Pods-App.release.xcconfig"; sourceTree = "<group>"; };
 		FC68EB0AF532CFC21C3344DD /* Pods-App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-App/Pods-App.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		A28F37A52CC8D4280035884B /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+		A2E51BBA2CCBB7A1001632BC /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
 			);
-			target = A28F378B2CC8D4270035884B /* wispr.homeExtension */;
+			target = A2E51BA02CCBB7A0001632BC /* wispr.homeExtension */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		A28F37912CC8D4270035884B /* wispr.home */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (A28F37A52CC8D4280035884B /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = wispr.home; sourceTree = "<group>"; };
+		A2E51BA62CCBB7A0001632BC /* wispr.home */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (A2E51BBA2CCBB7A1001632BC /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = wispr.home; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,12 +89,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A28F37892CC8D4270035884B /* Frameworks */ = {
+		A2E51B9E2CCBB7A0001632BC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A28F37902CC8D4270035884B /* SwiftUI.framework in Frameworks */,
-				A28F378E2CC8D4270035884B /* WidgetKit.framework in Frameworks */,
+				A2E51BA52CCBB7A0001632BC /* SwiftUI.framework in Frameworks */,
+				A2E51BA32CCBB7A0001632BC /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,8 +105,8 @@
 			isa = PBXGroup;
 			children = (
 				AF277DCFFFF123FFC6DF26C7 /* Pods_App.framework */,
-				A28F378D2CC8D4270035884B /* WidgetKit.framework */,
-				A28F378F2CC8D4270035884B /* SwiftUI.framework */,
+				A2E51BA22CCBB7A0001632BC /* WidgetKit.framework */,
+				A2E51BA42CCBB7A0001632BC /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -117,11 +114,10 @@
 		504EC2FB1FED79650016851F = {
 			isa = PBXGroup;
 			children = (
-				A28F37D62CC90C9A0035884B /* icons */,
-				A28F37D02CC8FB3E0035884B /* fonts */,
-				A28F37A72CC8D4450035884B /* wispr.homeExtension.entitlements */,
+				A2E51BC02CCBE324001632BC /* fonts */,
+				A2E51BBC2CCBB7EC001632BC /* wispr.homeExtension.entitlements */,
 				504EC3061FED79650016851F /* App */,
-				A28F37912CC8D4270035884B /* wispr.home */,
+				A2E51BA62CCBB7A0001632BC /* wispr.home */,
 				504EC3051FED79650016851F /* Products */,
 				7F8756D8B27F46E3366F6CEA /* Pods */,
 				27E2DDA53C4D2A4D1A88CE4A /* Frameworks */,
@@ -131,8 +127,8 @@
 		504EC3051FED79650016851F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				504EC3041FED79650016851F /* App.app */,
-				A28F378C2CC8D4270035884B /* wispr.homeExtension.appex */,
+				504EC3041FED79650016851F /* wispr.app */,
+				A2E51BA12CCBB7A0001632BC /* wispr.homeExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -140,7 +136,7 @@
 		504EC3061FED79650016851F /* App */ = {
 			isa = PBXGroup;
 			children = (
-				A28F37A82CC8D46A0035884B /* App.entitlements */,
+				A2E51BBD2CCBB7F8001632BC /* App.entitlements */,
 				50379B222058CBB4000EE86E /* capacitor.config.json */,
 				504EC3071FED79650016851F /* AppDelegate.swift */,
 				504EC30B1FED79650016851F /* Main.storyboard */,
@@ -162,66 +158,58 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		A28F37D02CC8FB3E0035884B /* fonts */ = {
+		A2E51BC02CCBE324001632BC /* fonts */ = {
 			isa = PBXGroup;
 			children = (
-				A28F37D12CC8FB510035884B /* gohufont.ttf */,
+				A2E51BBF2CCBE324001632BC /* gohufont.ttf */,
 			);
 			path = fonts;
-			sourceTree = "<group>";
-		};
-		A28F37D62CC90C9A0035884B /* icons */ = {
-			isa = PBXGroup;
-			children = (
-				A28F37D92CC90D0B0035884B /* AppIcon.png */,
-			);
-			path = icons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		504EC3031FED79650016851F /* App */ = {
+		504EC3031FED79650016851F /* wispr */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 504EC3161FED79650016851F /* Build configuration list for PBXNativeTarget "App" */;
+			buildConfigurationList = 504EC3161FED79650016851F /* Build configuration list for PBXNativeTarget "wispr" */;
 			buildPhases = (
 				6634F4EFEBD30273BCE97C65 /* [CP] Check Pods Manifest.lock */,
 				504EC3001FED79650016851F /* Sources */,
 				504EC3011FED79650016851F /* Frameworks */,
 				504EC3021FED79650016851F /* Resources */,
 				9592DBEFFC6D2A0C8D5DEB22 /* [CP] Embed Pods Frameworks */,
-				A28F37A22CC8D4280035884B /* Embed Foundation Extensions */,
+				A2E51BB72CCBB7A1001632BC /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				A28F37A02CC8D4280035884B /* PBXTargetDependency */,
+				A2E51BB52CCBB7A1001632BC /* PBXTargetDependency */,
 			);
-			name = App;
+			name = wispr;
 			productName = App;
-			productReference = 504EC3041FED79650016851F /* App.app */;
+			productReference = 504EC3041FED79650016851F /* wispr.app */;
 			productType = "com.apple.product-type.application";
 		};
-		A28F378B2CC8D4270035884B /* wispr.homeExtension */ = {
+		A2E51BA02CCBB7A0001632BC /* wispr.homeExtension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A28F37A62CC8D4280035884B /* Build configuration list for PBXNativeTarget "wispr.homeExtension" */;
+			buildConfigurationList = A2E51BBB2CCBB7A1001632BC /* Build configuration list for PBXNativeTarget "wispr.homeExtension" */;
 			buildPhases = (
-				A28F37882CC8D4270035884B /* Sources */,
-				A28F37892CC8D4270035884B /* Frameworks */,
-				A28F378A2CC8D4270035884B /* Resources */,
+				A2E51B9D2CCBB7A0001632BC /* Sources */,
+				A2E51B9E2CCBB7A0001632BC /* Frameworks */,
+				A2E51B9F2CCBB7A0001632BC /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				A28F37912CC8D4270035884B /* wispr.home */,
+				A2E51BA62CCBB7A0001632BC /* wispr.home */,
 			);
 			name = wispr.homeExtension;
 			packageProductDependencies = (
 			);
 			productName = wispr.homeExtension;
-			productReference = A28F378C2CC8D4270035884B /* wispr.homeExtension.appex */;
+			productReference = A2E51BA12CCBB7A0001632BC /* wispr.homeExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
@@ -238,7 +226,7 @@
 						LastSwiftMigration = 1100;
 						ProvisioningStyle = Automatic;
 					};
-					A28F378B2CC8D4270035884B = {
+					A2E51BA02CCBB7A0001632BC = {
 						CreatedOnToolsVersion = 16.0;
 					};
 				};
@@ -258,8 +246,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				504EC3031FED79650016851F /* App */,
-				A28F378B2CC8D4270035884B /* wispr.homeExtension */,
+				504EC3031FED79650016851F /* wispr */,
+				A2E51BA02CCBB7A0001632BC /* wispr.homeExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -270,7 +258,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				504EC3121FED79650016851F /* LaunchScreen.storyboard in Resources */,
-				A28F37D22CC8FB510035884B /* gohufont.ttf in Resources */,
 				50B271D11FEDC1A000F3C39B /* public in Resources */,
 				504EC30F1FED79650016851F /* Assets.xcassets in Resources */,
 				50379B232058CBB4000EE86E /* capacitor.config.json in Resources */,
@@ -279,12 +266,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A28F378A2CC8D4270035884B /* Resources */ = {
+		A2E51B9F2CCBB7A0001632BC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A28F37D32CC8FB510035884B /* gohufont.ttf in Resources */,
-				A28F37DA2CC90D0B0035884B /* AppIcon.png in Resources */,
+				A2E51BC12CCBE324001632BC /* gohufont.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,7 +321,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A28F37882CC8D4270035884B /* Sources */ = {
+		A2E51B9D2CCBB7A0001632BC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -345,10 +331,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		A28F37A02CC8D4280035884B /* PBXTargetDependency */ = {
+		A2E51BB52CCBB7A1001632BC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A28F378B2CC8D4270035884B /* wispr.homeExtension */;
-			targetProxy = A28F379F2CC8D4280035884B /* PBXContainerItemProxy */;
+			target = A2E51BA02CCBB7A0001632BC /* wispr.homeExtension */;
+			targetProxy = A2E51BB42CCBB7A1001632BC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -485,6 +471,7 @@
 			baseConfigurationReference = FC68EB0AF532CFC21C3344DD /* Pods-App.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = App/App.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -496,7 +483,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 7;
+				MARKETING_VERSION = 9.4;
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" \"-DDEBUG\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.wisp-r.app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -511,6 +498,7 @@
 			baseConfigurationReference = AF51FD2D460BCFE21FA515B2 /* Pods-App.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = App/App.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -522,7 +510,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 7;
+				MARKETING_VERSION = 9.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.wisp-r.app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
@@ -531,7 +519,7 @@
 			};
 			name = Release;
 		};
-		A28F37A32CC8D4280035884B /* Debug */ = {
+		A2E51BB82CCBB7A1001632BC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -559,7 +547,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MARKETING_VERSION = 7;
+				MARKETING_VERSION = 9.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.wisp-r.app.wispr-home";
@@ -572,7 +560,7 @@
 			};
 			name = Debug;
 		};
-		A28F37A42CC8D4280035884B /* Release */ = {
+		A2E51BB92CCBB7A1001632BC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -600,7 +588,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MARKETING_VERSION = 7;
+				MARKETING_VERSION = 9.4;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.wisp-r.app.wispr-home";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -623,7 +611,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		504EC3161FED79650016851F /* Build configuration list for PBXNativeTarget "App" */ = {
+		504EC3161FED79650016851F /* Build configuration list for PBXNativeTarget "wispr" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				504EC3171FED79650016851F /* Debug */,
@@ -632,11 +620,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A28F37A62CC8D4280035884B /* Build configuration list for PBXNativeTarget "wispr.homeExtension" */ = {
+		A2E51BBB2CCBB7A1001632BC /* Build configuration list for PBXNativeTarget "wispr.homeExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A28F37A32CC8D4280035884B /* Debug */,
-				A28F37A42CC8D4280035884B /* Release */,
+				A2E51BB82CCBB7A1001632BC /* Debug */,
+				A2E51BB92CCBB7A1001632BC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

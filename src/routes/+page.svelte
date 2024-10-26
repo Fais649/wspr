@@ -1,7 +1,5 @@
 <script lang="ts">
-	import { Footer } from "$lib/components/ui/card";
 	import ToolBar from "$lib/components/ui/ToolBar.svelte";
-	import { device, type DeviceInfo } from "$lib/stores/deviceStore";
 	import DividerPanel from "$lib/components/ui/DividerPanel.svelte";
 	import { loadTodayInfoFile } from "$lib/services/filesystem";
 	import { onDestroy, onMount } from "svelte";
@@ -9,40 +7,77 @@
 	import { reloadWidget } from "$lib/services/widget";
 	import { App } from "@capacitor/app";
 	import type { PluginListenerHandle } from "@capacitor/core";
+	import { Footer } from "$lib/components/ui/drawer";
+	import { Keyboard } from "@capacitor/keyboard";
+	import { ScreenOrientation } from "@capacitor/screen-orientation";
+
+	let portrait: boolean = true;
+	let vpHeight = 800;
+	let vpWidth = 400;
+	let kbHeight = 0;
 
 	let appListener: PluginListenerHandle;
+
 	onMount(async () => {
 		await loadTodayInfoFile($date.dateString);
 		await reloadWidget();
 		appListener = await App.addListener("appStateChange", ({ isActive }) => {
 			reloadWidget();
 		});
+
+		vpHeight = window.innerHeight;
+		vpWidth = window.innerWidth;
+		portrait = vpHeight > vpWidth;
+
+		Keyboard.addListener("keyboardWillShow", (e) => {
+			kbHeight = e.keyboardHeight;
+		});
+
+		ScreenOrientation.addListener("screenOrientationChange", (e) => {
+			vpHeight = window.innerHeight;
+			vpWidth = window.innerWidth;
+		});
+
+		Keyboard.addListener("keyboardWillHide", () => {
+			kbHeight = 0;
+		});
 	});
+
+	window.addEventListener("resize", () => {
+		vpHeight = window.innerHeight;
+		vpWidth = window.innerWidth;
+		portrait = vpHeight > vpWidth;
+
+		console.log("width: ", window.innerWidth);
+		console.log("height: ", window.innerHeight);
+	});
+
+	$: containerHeight = vpHeight - kbHeight;
+	$: containerWidth = vpWidth;
+	$: portrait = containerHeight > containerWidth;
 
 	onDestroy(async () => {
 		await reloadWidget();
 		appListener.remove();
 	});
-
-	let deviceInfo: DeviceInfo;
-	device.subscribe((data) => {
-		deviceInfo = data;
-	});
-
-	$: containerHeight = deviceInfo !== undefined ? deviceInfo.heightPx : 800;
 </script>
 
 <div
 	style="height: {containerHeight}px;"
-	class="page fixed overflow-hidden flex flex-col w-full items-center
+	class="page overflow-hidden flex flex-col w-full items-center
 	justify-start p-2"
 >
-	<div class="flex justify-center h-full w-full mt-1 mb-20">
-		<DividerPanel />
+	<div
+		class="w-full flex justify-center {portrait ? 'mt-4 mb-20' : ''} h-[100%]"
+	>
+		<DividerPanel {portrait} />
 	</div>
-
-	<Footer class="w-full absolute bottom-0 z-50">
-		<div class="w-full flex flex-row justify-center">
+	<Footer class="absolute bottom-4  w-full z-50">
+		<div
+			class=" w-full flex {portrait
+				? ' justify-center'
+				: 'justify-start scale-90 p-0 m-0 left-[-60px]'}"
+		>
 			<ToolBar />
 		</div>
 	</Footer>

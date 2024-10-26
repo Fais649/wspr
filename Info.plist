@@ -53,5 +53,16 @@
 	<string>Add events to the calendar</string>
 	<key>NSCalendarsUsageDescription</key>
 	<string>To add events to the calendar</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+	  <dict>
+	    <key>CFBundleURLName</key>
+	    <string>com.getcapacitor.capacitor</string>
+	    <key>CFBundleURLSchemes</key>
+	    <array>
+	      <string>App</string>
+	    </array>
+	  </dict>
+	</array>
 </dict>
 </plist>

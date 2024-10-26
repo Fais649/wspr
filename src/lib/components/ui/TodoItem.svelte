@@ -6,30 +6,29 @@
     EventType,
   } from "$lib/stores/eventStore";
   import { type TodoItem } from "$lib/types/index";
-  import type { PluginListenerHandle } from "@capacitor/core";
-  import { Keyboard } from "@capacitor/keyboard";
   import { createEventDispatcher, onDestroy, onMount } from "svelte";
   import { swipe } from "svelte-gestures";
   import { reloadWidget } from "$lib/services/widget";
+  import type { PaneGroupAPI } from "paneforge";
+  import { saveTodayInfoFile } from "$lib/services/filesystem";
+  import { date } from "$lib/stores/todayStore";
 
   export let todo: TodoItem;
-  export let isChild: boolean = false;
+  export let paneGroup: PaneGroupAPI;
+  export let portrait: boolean;
 
-  let keyboardHandler: PluginListenerHandle;
   const dispatch = createEventDispatcher<{ delete: { id: number } }>();
 
   onMount(async () => {
-    focusActiveItem();
-    keyboardHandler = await Keyboard.addListener("keyboardDidShow", () => {});
+    handleFocus();
     await reloadWidget();
   });
 
   onDestroy(async () => {
-    keyboardHandler.remove();
     await reloadWidget();
   });
 
-  function focusActiveItem() {
+  function handleFocus() {
     let input = document.querySelector(".todo-input") as HTMLElement;
     if (input) {
       input.focus();
@@ -44,7 +43,10 @@
       dispatch("delete", { id: todo.id });
     } else {
       todo.editing = false;
+      saveTodayInfoFile($date.dateString);
     }
+
+    reloadWidget();
   }
 
   function triggerEditTodoItemEvent() {
@@ -54,15 +56,13 @@
     });
     todo.editing = true;
     setTimeout(() => {
-      focusActiveItem();
+      handleFocus();
     }, 1);
   }
 
   function toggleCompleteTodoItem() {
     todo.completed = !todo.completed;
   }
-
-  function handleKeyDown(e: KeyboardEvent): void {}
 
   function handleSwipe(event): void {
     if (
@@ -93,17 +93,23 @@
       }}
     >
       {#if todo.completed}
-        {isChild ? "" : ""}
+        {""}
       {:else}
-        {isChild ? "" : ""}
+        {""}
       {/if}
     </button>
     {#if todo.editing}
       <Input
         class="todo-input pl-2 rounded-2xl text-[13px] w-full h-[28px]"
         placeholder=">..."
-        on:blur={handleBlur}
-        on:keydown={handleKeyDown}
+        on:focus={() => {
+          paneGroup.setLayout([100, 0]);
+          handleFocus();
+        }}
+        on:blur={() => {
+          paneGroup.setLayout(portrait ? [80, 20] : [50, 50]);
+          handleBlur();
+        }}
         bind:value={todo.text}
       />
     {:else}
