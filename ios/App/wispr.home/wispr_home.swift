@@ -118,7 +118,7 @@ struct WidgetEntryView: View {
             // Event Items
             if !entry.dataModel.eventItems.isEmpty {
                 VStack(alignment: .center) {
-                    ForEach(entry.dataModel.eventItems.prefix(4)) { event in
+                    ForEach(entry.dataModel.eventItems.prefix(5)) { event in
                         HStack(alignment: .center ) {
                             Text("󰇝 \(event.title)")
                                 .font(Font.custom("GohuFontUni11NFM", size: 14))
@@ -139,7 +139,7 @@ struct WidgetEntryView: View {
             // Todo Items
             if !entry.dataModel.todoItems.isEmpty {
                 VStack(alignment: .center) {
-                    ForEach(entry.dataModel.todoItems.prefix(7)) { todo in
+                    ForEach(entry.dataModel.todoItems.prefix(6)) { todo in
                         if (!todo.completed) {
                             let text = "  " + todo.text
                             HStack(alignment:.center) {
@@ -147,18 +147,6 @@ struct WidgetEntryView: View {
                                     .font(.custom("GohuFontUni11NFM", size: 14))
                                     .foregroundColor(.white)
                                     .strikethrough(todo.completed, color: .white)
-                                Spacer()
-                            }
-                            .padding(.vertical, 0.5)
-                        }
-                    }
-                    ForEach(entry.dataModel.todoItems.prefix(7)) { todo in
-                        if (todo.completed) {
-                            let text =  "  " + todo.text
-                            HStack(alignment:.center) {
-                                Text(text)
-                                    .font(.custom("GohuFontUni11NFM", size: 14))
-                                    .foregroundColor(.gray)
                                 Spacer()
                             }
                             .padding(.vertical, 0.5)
@@ -213,6 +201,7 @@ struct wispr_home: Widget {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
             WidgetEntryView(entry: entry)
         }
+        .supportedFamilies([.systemExtraLarge, .systemLarge])
         .configurationDisplayName("Today's Items")
         .description("Show today's events and todos")
     }
@@ -227,10 +216,30 @@ struct MyJSONWidget_Previews: PreviewProvider {
             todoItems: [
                 TodoItem(id: 1, text: "Finish report", completed: false,
                          editing: false,isChild: false ),
-                TodoItem(id: 2, text: "Call Alice", completed: true, editing:
-                            false, isChild: false)
+                TodoItem(id: 1, text: "Finish report", completed: false,
+                         editing: false,isChild: false ),
+                TodoItem(id: 1, text: "Finish report", completed: false,
+                         editing: false,isChild: false ),
+                TodoItem(id: 1, text: "Finish report", completed: false,
+                         editing: false,isChild: false ),
+                TodoItem(id: 1, text: "Finish report", completed: false,
+                         editing: false,isChild: false ),
+                TodoItem(id: 1, text: "Finish report", completed: false,
+                         editing: false,isChild: false ),
+                TodoItem(id: 1, text: "Finish report", completed: false,
+                         editing: false,isChild: false ),
+                TodoItem(id: 1, text: "Finish report", completed: false,
+                         editing: false,isChild: false ),
             ],
             eventItems: [
+                EventItem(id: "event1", title: "Meeting with Bob", desc: "Discuss project status", startDate: Int(Date().timeIntervalSince1970), endDate: Int(Date().addingTimeInterval(3600).timeIntervalSince1970)),
+                
+                EventItem(id: "event1", title: "Meeting with Bob", desc: "Discuss project status", startDate: Int(Date().timeIntervalSince1970), endDate: Int(Date().addingTimeInterval(3600).timeIntervalSince1970)),
+                EventItem(id: "event1", title: "Meeting with Bob", desc: "Discuss project status", startDate: Int(Date().timeIntervalSince1970), endDate: Int(Date().addingTimeInterval(3600).timeIntervalSince1970)),
+                
+                EventItem(id: "event1", title: "Meeting with Bob", desc: "Discuss project status", startDate: Int(Date().timeIntervalSince1970), endDate: Int(Date().addingTimeInterval(3600).timeIntervalSince1970)),
+                EventItem(id: "event1", title: "Meeting with Bob", desc: "Discuss project status", startDate: Int(Date().timeIntervalSince1970), endDate: Int(Date().addingTimeInterval(3600).timeIntervalSince1970)),
+                
                 EventItem(id: "event1", title: "Meeting with Bob", desc: "Discuss project status", startDate: Int(Date().timeIntervalSince1970), endDate: Int(Date().addingTimeInterval(3600).timeIntervalSince1970))
             ]
         )
