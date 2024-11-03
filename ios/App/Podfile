@@ -20,7 +20,7 @@ def capacitor_pods
   pod 'CapacitorWidgetsbridgePlugin', :path => '../../node_modules/capacitor-widgetsbridge-plugin'
 end
 
-target 'App' do
+target 'wispr' do
   capacitor_pods
   # Add your Pods here
 end
