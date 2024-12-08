@@ -5,7 +5,11 @@
     ElementType,
   } from "$lib/stores/eventStore";
 
-  export let event: EventItem;
+  interface Props {
+    event: EventItem;
+  }
+
+  let { event }: Props = $props();
 
   interface EventItem {
     id: string;
@@ -18,7 +22,7 @@
 
 <div
   id={event.id}
-  on:pointerup={() => {
+  onpointerup={() => {
     emitSimpleEvent(EventType.editCalendarEventItem, {
       targetId: event.id,
       elementType: ElementType.eventItem,

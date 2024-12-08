@@ -5,8 +5,12 @@
   import { Calendar } from "$lib/components/ui/calendar/index.js";
   import { type DateValue } from "@internationalized/date";
 
-  export let dateValue: DateValue | undefined;
-  export let changeDateBy: Function;
+  interface Props {
+    dateValue: DateValue | undefined;
+    changeDateBy: Function;
+  }
+
+  let { dateValue = $bindable(), changeDateBy }: Props = $props();
 
   const steps = [
     { value: -7, label: "󰇙󰇙" },
@@ -20,11 +24,13 @@
 </script>
 
 <Drawer.Root>
-  <Drawer.Trigger asChild let:builder>
-    <Button builders={[builder]} variant="outline">
-      {$date.dayOfWeek + " : " + $date.dateString}
-    </Button>
-  </Drawer.Trigger>
+  <Drawer.Trigger asChild >
+    {#snippet children({ builder })}
+        <Button builders={[builder]} variant="outline">
+        {$date.dayOfWeek + " : " + $date.dateString}
+      </Button>
+          {/snippet}
+    </Drawer.Trigger>
   <Drawer.Content>
     <div class="mx-auto w-full max-w-sm">
       <Drawer.Header>

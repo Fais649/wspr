@@ -11,10 +11,12 @@
 	import { Keyboard } from "@capacitor/keyboard";
 	import { ScreenOrientation } from "@capacitor/screen-orientation";
 
-	let portrait: boolean = true;
-	let vpHeight = 800;
-	let vpWidth = 400;
-	let kbHeight = 0;
+	let vpHeight = $state(800);
+	let vpWidth = $state(400);
+	let kbHeight = $state(0);
+	let containerHeight = $derived(vpHeight - kbHeight);
+	let containerWidth = $derived(vpWidth);
+	let portrait = $derived(containerHeight > containerWidth);
 
 	let appListener: PluginListenerHandle;
 
@@ -27,7 +29,6 @@
 
 		vpHeight = window.innerHeight;
 		vpWidth = window.innerWidth;
-		portrait = vpHeight > vpWidth;
 
 		Keyboard.addListener("keyboardWillShow", (e) => {
 			kbHeight = e.keyboardHeight;
@@ -46,15 +47,10 @@
 	window.addEventListener("resize", () => {
 		vpHeight = window.innerHeight;
 		vpWidth = window.innerWidth;
-		portrait = vpHeight > vpWidth;
 
 		console.log("width: ", window.innerWidth);
 		console.log("height: ", window.innerHeight);
 	});
-
-	$: containerHeight = vpHeight - kbHeight;
-	$: containerWidth = vpWidth;
-	$: portrait = containerHeight > containerWidth;
 
 	onDestroy(async () => {
 		await reloadWidget();

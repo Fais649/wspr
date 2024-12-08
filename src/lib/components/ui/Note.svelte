@@ -5,10 +5,14 @@
   import type { PaneGroupAPI } from "paneforge";
   import { saveTodayInfoFile } from "$lib/services/filesystem";
 
-  export let portrait: boolean;
 
-  export let paneGroup: PaneGroupAPI;
-  export let isFocused: boolean = false;
+  interface Props {
+    portrait: boolean;
+    paneGroup: PaneGroupAPI;
+    isFocused?: boolean;
+  }
+
+  let { portrait, paneGroup, isFocused = $bindable(false) }: Props = $props();
 </script>
 
 <div id="note" data-type="note" class="wrapper">

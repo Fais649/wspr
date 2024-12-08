@@ -13,9 +13,13 @@
   import { saveTodayInfoFile } from "$lib/services/filesystem";
   import { date } from "$lib/stores/todayStore";
 
-  export let todo: TodoItem;
-  export let paneGroup: PaneGroupAPI;
-  export let portrait: boolean;
+  interface Props {
+    todo: TodoItem;
+    paneGroup: PaneGroupAPI;
+    portrait: boolean;
+  }
+
+  let { todo = $bindable(), paneGroup, portrait }: Props = $props();
 
   const dispatch = createEventDispatcher<{ delete: { id: number } }>();
 
@@ -84,8 +88,8 @@
       style={todo.completed ? "color: grey;" : ""}
       class="min-w-3 text-[15px] mr-3"
       use:swipe
-      on:swipe={handleSwipe}
-      on:click={(e) => {
+      onswipe={handleSwipe}
+      onclick={(e) => {
         e.preventDefault();
         if (!todo.editing) {
           toggleCompleteTodoItem();
@@ -118,7 +122,7 @@
         class="eventTitle text-left w-[50%] text-[13px] {todo.completed
           ? 'line-through'
           : ''}"
-        on:click={() => {
+        onclick={() => {
           if (!todo.completed) {
             triggerEditTodoItemEvent();
           }

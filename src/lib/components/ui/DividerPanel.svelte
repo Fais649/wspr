@@ -6,12 +6,17 @@
   import { onMount } from "svelte";
   import { ScreenOrientation } from "@capacitor/screen-orientation";
 
-  export let portrait: boolean = true;
+  interface Props {
+    portrait?: boolean;
+  }
 
-  let isPointerDown: boolean = false;
+  let { portrait = true }: Props = $props();
+
+  let isPointerDown: boolean = $state(false);
   let focusedItem: boolean = false;
-  let focusedNote: boolean;
+  let focusedNote: boolean = $state(false);
   let paneGroup: PaneGroupAPI;
+
   onMount(() => {
     paneGroup.setLayout(portrait ? [80, 20] : [50, 50]);
 
@@ -46,14 +51,7 @@
     <ItemList {portrait} {paneGroup} />
   </Resizable.Pane>
 
-  <Resizable.Handle
-    on:pointerdown={() => {
-      isPointerDown = true;
-    }}
-    on:pointerup={() => {
-      isPointerDown = false;
-    }}
-  />
+  <Resizable.Handle />
 
   <Resizable.Pane
     class=" transition-all duration-[0.35s] {focusedItem

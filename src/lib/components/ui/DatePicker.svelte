@@ -1,12 +1,18 @@
 <script lang="ts">
   import { Button } from "$lib/components/ui/button/index.js";
   import * as Drawer from "$lib/components/ui/drawer/index.js";
-  import { date } from "$lib/stores/todayStore";
   import { Calendar } from "$lib/components/ui/calendar/index.js";
   import { type DateValue } from "@internationalized/date";
+  import {
+    getDate,
+  } from "$lib/components/ui/Items.svelte";
 
-  export let dateValue: DateValue | undefined;
-  export let changeDateBy: Function;
+  interface Props {
+    dateValue: DateValue | undefined;
+    changeDateBy: Function;
+  }
+
+  let { dateValue = $bindable(), changeDateBy }: Props = $props();
 
   const steps = [
     { value: -7, label: "󰇙󰇙" },
@@ -20,16 +26,18 @@
 </script>
 
 <Drawer.Root>
-  <Drawer.Trigger asChild let:builder>
-    <Button builders={[builder]} variant="outline">
-      {$date.dayOfWeek + " : " + $date.dateString}
-    </Button>
-  </Drawer.Trigger>
+  <Drawer.Trigger asChild >
+    {#snippet children({ builder })}
+        <Button builders={[builder]} variant="outline">
+        {getDate().toString()}
+      </Button>
+          {/snippet}
+    </Drawer.Trigger>
   <Drawer.Content>
     <div class="mx-auto w-fit max-w-sm">
       <Drawer.Header>
         <Drawer.Title>
-          {$date.dayOfWeek + " : " + $date.dateString}
+        {getDate().toString()}
         </Drawer.Title>
       </Drawer.Header>
     </div>
